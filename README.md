@@ -3,7 +3,7 @@ Node module for https://tally.aginn.tech/api.  For more information about this f
 
 ## Installation
 ```
-npm install tally.aginn.tech-api -s
+npm install tally.aginn.tech-api --save
 ```
 ## Usage
 ```js 
