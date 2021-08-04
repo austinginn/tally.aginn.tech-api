@@ -16,7 +16,7 @@ A new tally server instance will be created and kept alive while the node server
 ```js
 setInterval(() => {
 	ts.latencyCheck();
-}, 5000); //check ever 5 seconds
+}, 5000); //check every 5 seconds
 ```
 Use this to initiate a latency and server processing time check. Data will be returned on the "latency" event
 
