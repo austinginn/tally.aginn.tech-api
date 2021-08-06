@@ -17,7 +17,6 @@
   },
   "homepage": "https://github.com/austinginn/tally.aginn.tech-api#readme",
   "dependencies": {
-    "EventEmitter": "^1.0.0",
     "events": "^3.3.0",
     "request": "^2.88.2",
     "socket.io-client": "^4.1.3"
