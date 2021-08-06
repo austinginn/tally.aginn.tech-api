@@ -1,5 +1,11 @@
 # tally.aginn.tech-api
-Node module for https://tally.aginn.tech/api.  For more information about this free tally web service visit: https://tally.aginn.tech/about. If you are looking for the client side implementation go here: 
+Node module for https://tally.aginn.tech. You may also be looking for the following:
+---
+Tally Web Service: https://tally.aginn.tech
+Tally API Documentation: https://tally.aginn.tech/api
+Client Side Example: [Source Code]("https://github.com/)
+Server Side Example: [Source Code]("https://github.com/)
+Native Application for use with ATEM Switchers (Mac OS/Windows/Linux): [Source Code](https://github.com/) | [Packaged](https://tally.aginn.tech)
 
 ## Installation
 ```
@@ -37,7 +43,7 @@ Use this to initiate a latency and server processing time check. Data will be re
 	
 	ts.on("tally", (data) => {
 		console.log(data); //an array of length 30 (tally busses)
-						   //each tally bus contains a cam #
+							//each tally bus contains a cam #
 	});
 	
 	ts.on("server", (data) => {
