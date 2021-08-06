@@ -16,23 +16,18 @@ var tally = function () {
     //Generate client ID
     function cidGen() {
         var retVal = Math.floor(100000 + Math.random() * 900000);
-        console.log("Client ID: " + retVal);
+        // console.log("Client ID: " + retVal);
         return retVal;
     }
 
     //constructor
     var constructor = function tally() {
-        console.log("in constructor");
         //Socket.io connection listener
         //Default colors
-        // this.previewColor = "#FCFF33";
-        // this.programColor = "#FF3333";
-        // this.safeColor = "#33FF4C";
-        // this.isoColor = "#3394FF";
         //Tally info
 
         socket.on('connect', (socket) => {
-            console.log('Connected to tally.aginn.tech!');
+            // console.log('Connected to tally.aginn.tech!');
         });
 
 
