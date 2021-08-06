@@ -1,0 +1,25 @@
+{
+  "name": "tally.aginn.tech-api",
+  "version": "0.2.0",
+  "description": "tally.aginn.tech api implementation for node",
+  "main": "tally.aginn.tech-api.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/austinginn/tally.aginn.tech-api.git"
+  },
+  "author": "Austin Ginn <austinleeginn@gmail.com> (https://aginn.tech/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/austinginn/tally.aginn.tech-api/issues"
+  },
+  "homepage": "https://github.com/austinginn/tally.aginn.tech-api#readme",
+  "dependencies": {
+    "EventEmitter": "^1.0.0",
+    "events": "^3.3.0",
+    "request": "^2.88.2",
+    "socket.io-client": "^4.1.3"
+  }
+}
