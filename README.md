@@ -1,10 +1,11 @@
 # tally.aginn.tech-api
-Node module for https://tally.aginn.tech. You may also be looking for the following:
+Node module for https://tally.aginn.tech.  
+You may also be looking for the following:
 ---
-Tally Web Service: https://tally.aginn.tech
-Tally API Documentation: https://tally.aginn.tech/api
-Client Side Example: [Source Code]("https://github.com/)
-Server Side Example: [Source Code]("https://github.com/)
+Tally Web Service: https://tally.aginn.tech  
+Tally API Documentation: https://tally.aginn.tech/api  
+Client Side Example: [Source Code]("https://github.com/)  
+Server Side Example: [Source Code]("https://github.com/)  
 Native Application for use with ATEM Switchers (Mac OS/Windows/Linux): [Source Code](https://github.com/) | [Packaged](https://tally.aginn.tech)
 
 ## Installation
