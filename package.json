@@ -1,6 +1,6 @@
 {
   "name": "tally.aginn.tech-api",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "tally.aginn.tech api implementation for node",
   "main": "tally.aginn.tech-api.js",
   "scripts": {
