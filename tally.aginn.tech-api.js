@@ -38,7 +38,7 @@ var tally = function () {
         //Connect to tally server and keep alive
         //Start socket.io listeners
         function initTallyClient() {
-            console.log("in init")
+            // console.log("in init")
             return new Promise(resolve => {
                 request.get("https://tally.aginn.tech/api/new", (err, response, body) => {
                     if (err) { console.log(err); return -1; }
@@ -47,7 +47,7 @@ var tally = function () {
 
                     //handle errors
                     if (result.result == "success") {
-                        console.log("Tally Server: " + result.data);
+                        // console.log("Tally Server: " + result.data);
                         resolve(result.data);
                         eventEmitter.emit("connected", result.data);
 
