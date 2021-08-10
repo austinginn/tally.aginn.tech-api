@@ -4,6 +4,7 @@
 const request = require('request');
 const io = require('socket.io-client');
 const EventEmitter = require('events');
+const { isBuffer } = require('util');
 
 
 var tally = function () {
@@ -33,6 +34,22 @@ var tally = function () {
 
         //Get a tally server instance
         var t_server = initTallyClient();
+        var version = getApiVersion();
+
+        function getApiVersion() {
+            return new Promise(resolve => {
+                request.get("https://tally.aginn.tech/api/version"), (err, response, body) => {
+                    if(err){ console.log(err); return -1; } 
+                    var result = JSON.parse(body);
+
+                    if(result.result == "succes"){
+                        resolve(result.data);
+                    } else {
+                        return -1;
+                    }
+                }
+            })
+        }
 
 
         //Connect to tally server and keep alive
@@ -131,6 +148,10 @@ var tally = function () {
             return await t_server;
         }
 
+        this.apiVersion = async () => {
+            return await version;
+        }
+
         //Event Listeneres
         this.on = (event, callback) => {
             eventEmitter.on(event, (data) => {
@@ -175,6 +196,8 @@ var tally = function () {
                 });
             });
         }
+
+
 
     }
     //end constructor
