@@ -4,7 +4,6 @@
 const request = require('request');
 const io = require('socket.io-client');
 const EventEmitter = require('events');
-const { isBuffer } = require('util');
 
 
 var tally = function () {
@@ -23,32 +22,31 @@ var tally = function () {
 
     //constructor
     var constructor = function tally() {
-        //Socket.io connection listener
-        //Default colors
-        //Tally info
-
-        socket.on('connect', (socket) => {
-            // console.log('Connected to tally.aginn.tech!');
-        });
+        // socket.on('connect', (socket) => {
+        //     // console.log('Connected to tally.aginn.tech!');
+        // });
 
 
         //Get a tally server instance
         var t_server = initTallyClient();
         var version = getApiVersion();
 
+        //API Version
         function getApiVersion() {
-            return new Promise(resolve => {
-                request.get("https://tally.aginn.tech/api/version"), (err, response, body) => {
-                    if(err){ console.log(err); return -1; } 
-                    var result = JSON.parse(body);
-
-                    if(result.result == "succes"){
-                        resolve(result.data);
-                    } else {
+            return new Promise(resolve => { 
+                request.get("https://tally.aginn.tech/api/version", (err, response, body) => {
+                    if(err){
+                        console.log(err);
                         return -1;
                     }
-                }
-            })
+
+                    var result = JSON.parse(body);
+                    if(result.result == "success"){
+                        resolve(result.data);
+                        return 0;
+                    }
+                });
+            });
         }
 
 
@@ -103,7 +101,8 @@ var tally = function () {
                         ////////////////////////
                         //Latency
                         socket.on(result.data + "_" + cId + "_latency", (data) => {
-                            eventEmitter.emit("latency", { "processing_time": data.pt, "latency": new Date().getTime() - data.ogTS });
+                            var latency = new Date().getTime() - data.ogTS;
+                            eventEmitter.emit("latency", { "processing_time": data.pt, "latency": latency });
                         });
 
                         //Tally info
@@ -156,6 +155,30 @@ var tally = function () {
         this.on = (event, callback) => {
             eventEmitter.on(event, (data) => {
                 callback(data);
+            });
+        }
+
+        this.demoOn = () => {
+            t_server.then((result) => {
+                request.get('https://tally.aginn.tech/api/demo/on?id=' + result, (err, response, body) => {
+                    if (err) {
+                        console.log(err);
+                        eventEmitter.emit("disconnected", err);
+                        return -1;
+                    }
+                });
+            });
+        }
+
+        this.demoOff = () => {
+            t_server.then((result) => {
+                request.get('https://tally.aginn.tech/api/demo?id=' + result, (err, response, body) => {
+                    if (err) {
+                        console.log(err);
+                        eventEmitter.emit("disconnected", err);
+                        return -1;
+                    }
+                });
             });
         }
 
