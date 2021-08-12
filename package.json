@@ -5,7 +5,7 @@
   "main": "tally.aginn.tech-api.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "postversion": "git push origin master --follow-tags && npm publish"
+    "postversion": "git push origin main --follow-tags && npm publish"
   },
   "repository": {
     "type": "git",
