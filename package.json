@@ -10,6 +10,15 @@
     "type": "git",
     "url": "git+https://github.com/austinginn/tally.aginn.tech-api.git"
   },
+  "keywords": [
+    "tally",
+    "light",
+    "production",
+    "video",
+    "program",
+    "preview",
+    "iso"
+  ],
   "author": "Austin Ginn <austinleeginn@gmail.com> (https://aginn.tech/)",
   "license": "MIT",
   "bugs": {

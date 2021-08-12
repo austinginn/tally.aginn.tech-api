@@ -1,0 +1,110 @@
+<body>
+    <h1><a href="tally.aginn.tech/api">tally.aginn.tech client side api implementation example</a></h1>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src='/socket.io/socket.io.js'></script>
+    <script src="/tally_api.js"></script>
+    <script>
+        window.onload = loaded();
+
+        function loaded() {
+
+            //Set disconnected handler to whatever you want
+            disconnected = () => {
+                console.log("disconnected");
+            }
+
+            //Create a tally server instance
+            newInstance((id) => {
+                console.log(id);
+
+                //Keep the tally server instance alive. Defaults to 5 mintues unless specificied (id, callback, minutes)
+                keepAlive(id, (data) => {
+                    console.log("keepAlive: " + data);
+                });
+
+                //Verify tally server instance
+                verifyInstance(id, (data) => {
+                    console.log("verifytInstance: " + data);
+                });
+
+                //Check latency -- receieved on receiveLatency function
+                setInterval(() => {
+                    checkLatency(id);
+                }, 5000);
+
+                //Set custom colors -- the following are default colors 
+                previewColor = "#FCFF33";
+                programColor = "#FF3333";
+                safeColor = "#33FF4C";
+                isoColor = "#3394FF";
+
+                updateColors(id, (data) => {
+                    console.log("updateColors: " + data);
+                });
+
+
+                //Update tally info
+                //This will likely be implemented server side alongside your video switcher api/app
+                //Server ID, tally bus, cam #, callback
+                updateTally(id, 0, 0, (data) => {
+                    console.log("updateTally: " + data);
+                });
+
+                //Turn on demo mode
+                //Demo mode randomizes tally info for 2 program, 2 preview and 6 iso busses
+                //Used for testing purposes
+                demoOn(id, (data) => {
+                    console.log(data);
+                });
+
+                // //turn off demo mode
+                // demoOff(id, (data) => {
+                //     console.log(data);
+                // });
+
+                //Get tally information
+                initTally(id, (data) => {
+                    console.log("initTally: " + data);
+                });
+
+                //Get tally server information
+                initOptions(id, (data) => {
+                    console.log("initOptions: " + data);
+                });
+
+                ////////////////////////////
+                ////SOCKET IO LISTENERS////
+                ///////////////////////////
+                //Receive realtime tally info 
+                receiveTally(id, (data) => {
+                    console.log("receiveTally: " + data);
+                });
+
+                //Receive realtime tally server info
+                receiveOptions(id, (data) => {
+                    console.log("receiveOptions: " + data);
+                });
+
+                //Receive server latency information
+                receiveLatency(id, (data) => {
+                    console.log("recieveLatency: " + data);
+                });
+
+                //Receive cleanup information
+                //If tally instance times out you will be notified here
+                //If you don't pass a callback the disconnected function will be called
+                receiveCleanup(id, (data) => {
+                    console.log("receiveCleanup: " + data);
+                });
+
+                //Receive Demo Messages
+                //When demo mode is on it will send program, preview, and iso messages corresponding with the randomly generated tally info
+                receiveDemoMessages(id, (data) => {
+                    console.log("receiveDemoMessages: " + data);
+                });
+            });
+        }
+    </script>
+</body>

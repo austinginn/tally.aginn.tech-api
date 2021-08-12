@@ -1,0 +1,14 @@
+{
+  "name": "tally.aginn.tech-api-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "test.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Austin Ginn <austinleeginn@gmail.com> (https://aginn.tech/)",
+  "license": "MIT",
+  "dependencies": {
+    "tally.aginn.tech-api": "^0.3.2"
+  }
+}
